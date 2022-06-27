@@ -18,6 +18,8 @@ services:
       - "5000"
     ports:
       - "5000:5000"
+    env_file:
+      - .env
     command: >
       mlflow server
       --host 0.0.0.0
