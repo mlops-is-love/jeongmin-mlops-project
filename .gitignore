@@ -2,3 +2,4 @@ annotations
 json_annotations
 metadata
 .env
+__pycache__

@@ -1,0 +1,1 @@
+docker run -d -p 2345:5432 -e POSTGRES_DB=test-db -e POSTGRES_USER=super_user -e POSTGRES_PASSWORD=su_password postgres
