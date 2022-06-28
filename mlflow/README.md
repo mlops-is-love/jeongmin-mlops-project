@@ -7,5 +7,5 @@
 
 2. start docker-compose 
 
-`docker-compose --env-file .env up -d --build`
+`docker-compose up -d --build`
 
