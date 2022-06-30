@@ -5,8 +5,9 @@ import xml.etree.ElementTree as ET
 def xml_to_jsons(xml_file):
     tree = ET.parse(xml_file)
     root = tree.getroot()
-    json_data = {}
+    json_data = {} # initialize json_data
     
+    # extract other metadatas
     file_name = root.find("filename").text
     json_data["file_name"] = file_name
     
@@ -21,6 +22,7 @@ def xml_to_jsons(xml_file):
         print("do not have any objects")
         return None
     
+    # extract objects
     classes = []
     bboxes = []
     for obj in objects:
@@ -39,17 +41,21 @@ def xml_to_jsons(xml_file):
     
     return json_data
 
-    
+
+def save_json(anno, json_data):
+    with open(f'json_annotations/{anno}.json', 'w') as file:
+            json.dump(json_data, file)
     
     
 if __name__ == "__main__":
     annos = os.listdir("annotations") 
     os.makedirs("json_annotations", exist_ok=True)
+    
     for anno in annos:
         json_data = xml_to_jsons(f"annotations/{anno}")
         
         if json_data == None:
+            # 객체가 없는 경우
             continue
         
-        with open(f'json_annotations/{anno}.json', 'w') as file:
-            json.dump(json_data, file)
+        save_json(anno=anno, json_data=json_data)
