@@ -3,3 +3,4 @@ json_annotations
 metadata
 .env
 __pycache__
+.DS_Store
