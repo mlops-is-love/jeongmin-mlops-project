@@ -1,0 +1,26 @@
+version: "3"
+services:
+  inference_server1:
+    build:
+      context: ./inference_server
+      dockerfile: "${DOCKERFILE:-Dockerfile}"
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+
+  inference_server2:
+    build:
+      context: ./inference_server
+      dockerfile: "${DOCKERFILE:-Dockerfile}"
+    ports:
+      - "8002:8000"
+    env_file:
+      - .env
+
+  serving_server:
+    build:
+      context: ./serving_server
+      dockerfile: "${DOCKERFILE:-Dockerfile}"
+    ports:
+      - "8003:8000"
